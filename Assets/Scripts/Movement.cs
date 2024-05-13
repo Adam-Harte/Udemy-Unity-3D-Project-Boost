@@ -8,6 +8,8 @@ public class Movement : MonoBehaviour
 
     [SerializeField]
     float mainThrust = 1000f;
+    [SerializeField]
+    float rotationThrust = 100f;
 
     private void Awake()
     {
@@ -38,11 +40,16 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            Debug.Log("rotate left");
+            ApplyRotation(Vector3.forward);
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            Debug.Log("rotate right");
+            ApplyRotation(Vector3.back);
         }
+    }
+
+    private void ApplyRotation(Vector3 rotation)
+    {
+        transform.Rotate(rotation * rotationThrust * Time.deltaTime);
     }
 }
