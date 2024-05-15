@@ -11,6 +11,8 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField]
     AudioClip successSound;
 
+    bool isTransitioning = false;
+
     AudioSource audioSource;
 
     private void Awake()
@@ -20,6 +22,8 @@ public class CollisionHandler : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        if (isTransitioning) { return; }
+
         switch (other.gameObject.tag)
         {
             case "Friendly":
@@ -38,6 +42,8 @@ public class CollisionHandler : MonoBehaviour
 
     private void StartSuccessSequence()
     {
+        isTransitioning = true;
+        audioSource.Stop();
         audioSource.PlayOneShot(successSound);
         GetComponent<Movement>().enabled = false;
         Invoke("LoadNextLevel", levelLoadDelay);
@@ -45,6 +51,8 @@ public class CollisionHandler : MonoBehaviour
 
     void StartCrashSequence()
     {
+        isTransitioning = true;
+        audioSource.Stop();
         audioSource.PlayOneShot(crashSound);
         // todo add particle effect
         GetComponent<Movement>().enabled = false;
