@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 7565221535510005493}
   - component: {fileID: 4742271441772651386}
   - component: {fileID: 3677355969042020163}
+  - component: {fileID: 1428280817200185304}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Untagged
@@ -368,6 +369,18 @@ MonoBehaviour:
   successSound: {fileID: 8300000, guid: f7d3ff3a042990740a5f0ea200069b42, type: 3}
   crashParticles: {fileID: 3862199879391173469}
   successParticles: {fileID: 3713472430502373298}
+--- !u!114 &1428280817200185304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5004210721730399384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc14555bcdd59b4492e6d6633fb0d59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8556256992401628968
 GameObject:
   m_ObjectHideFlags: 0
