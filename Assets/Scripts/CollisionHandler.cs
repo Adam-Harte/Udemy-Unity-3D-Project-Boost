@@ -16,6 +16,7 @@ public class CollisionHandler : MonoBehaviour
     ParticleSystem successParticles;
 
     bool isTransitioning = false;
+    bool collisionDisabled = false;
 
     AudioSource audioSource;
 
@@ -24,9 +25,14 @@ public class CollisionHandler : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    private void Update()
+    {
+        RespondToDebugKeys();
+    }
+
     private void OnCollisionEnter(Collision other)
     {
-        if (isTransitioning) { return; }
+        if (isTransitioning || collisionDisabled) { return; }
 
         switch (other.gameObject.tag)
         {
@@ -41,6 +47,18 @@ public class CollisionHandler : MonoBehaviour
                 Debug.Log("Sorry you blew up!");
                 StartCrashSequence();
                 break;
+        }
+    }
+
+    private void RespondToDebugKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadNextLevel();
+        }
+
+        if (Input.GetKeyDown(KeyCode.C)) {
+            collisionDisabled = !collisionDisabled;
         }
     }
 
